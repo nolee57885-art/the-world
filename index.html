@@ -29,24 +29,19 @@
     <div class="scene-caption"><span id="scene-time">GOLDEN HOUR</span><span class="caption-divider">·</span><span id="scene-weather">A GENTLE BREEZE</span></div>
 
     <footer class="controls">
-      <div class="music-panel">
-        <div class="music-icon" aria-hidden="true">♫</div>
-        <div class="track-copy">
-          <span class="track-label">THE SOUNDTRACK</span>
-          <strong id="track-name">Your music, your moment</strong>
-          <span id="track-hint">Add your classical or flute playlist</span>
+      <div class="music-panel spotify-panel">
+        <iframe
+          title="Classical and flute playlist on Spotify"
+          src="https://open.spotify.com/embed/playlist/1ym4rFe5GaUgSH6CpKr70N?utm_source=generator&theme=0"
+          width="352" height="152" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"></iframe>
+        <div hidden>
+          <div id="track-name"></div><div id="track-hint"></div>
+          <button id="previous"></button><button id="play"></button><button id="next"></button>
+          <input id="volume" type="range" value="0.65">
+          <input id="music-files" type="file" multiple>
         </div>
-        <div class="player-actions">
-          <button id="previous" class="icon-button" aria-label="Previous track" title="Previous">↶</button>
-          <button id="play" class="play-button" aria-label="Play music" title="Play">▶</button>
-          <button id="next" class="icon-button" aria-label="Next track" title="Next">↷</button>
-        </div>
-        <label class="volume-control" title="Volume">
-          <span aria-hidden="true">♪</span>
-          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Music volume">
-        </label>
-        <label class="add-music" for="music-files">＋ <span>Add music</span></label>
-        <input id="music-files" type="file" accept="audio/*" multiple hidden>
       </div>
       <button id="discover" class="discover-button"><span>✧</span> Discover another world <span class="arrow">↗</span></button>
     </footer>
