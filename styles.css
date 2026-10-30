@@ -22,3 +22,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,label:focus-within{outl
 @keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:760px){.topbar{padding:20px 6vw}.wordmark{font-size:18px}.top-note{font-size:8px}.destination{left:7vw;top:24%;max-width:85vw}.destination h1{font-size:clamp(42px,12vw,68px)}.scene-caption{bottom:205px;right:7vw;font-size:8px}.controls{left:5vw;right:5vw;bottom:35px;flex-direction:column;align-items:stretch;gap:10px}.music-panel{min-width:0;width:100%;padding:11px 10px;gap:9px}.track-copy{min-width:0}.track-copy strong{font-size:10px}.track-copy>span:last-child{font-size:8px}.music-icon{width:30px;height:30px;flex-shrink:0}.player-actions{gap:2px}.icon-button{padding:5px}.volume-control{display:none}.add-music{font-size:9px;padding-left:9px}.add-music span{display:none}.discover-button{width:100%;padding:14px}.hint{bottom:12px}}
 @media(max-height:650px) and (min-width:761px){.destination{top:20%}.controls{bottom:20px}.scene-caption{bottom:135px}}
+
+/* Spotify playlist player */
+.spotify-panel{display:block;width:352px;min-width:0;padding:0;border:0;background:transparent;box-shadow:0 12px 35px rgba(0,0,0,.22);backdrop-filter:none}
+.spotify-panel iframe{display:block;width:352px;max-width:100%;height:152px;border:0;border-radius:12px;overflow:hidden}
+@media(max-width:760px){.spotify-panel{width:100%}.spotify-panel iframe{width:100%;height:152px}}
