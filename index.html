@@ -33,6 +33,7 @@
         <div class="playlist-switch" role="group" aria-label="Choose a soundtrack playlist">
           <button class="playlist-tab active" type="button" data-playlist="1ym4rFe5GaUgSH6CpKr70N" aria-pressed="true">Playlist 1</button>
           <button class="playlist-tab" type="button" data-playlist="2K8LvkhIVDlsiUzaaKqgRf" aria-pressed="false">Playlist 2</button>
+          <button class="playlist-tab" type="button" data-playlist="2JavdfuwRpOTPjP8T6N8TI" aria-pressed="false">Playlist 3</button>
         </div>
         <iframe id="spotify-player"
           title="Classical and flute playlist on Spotify"
@@ -52,6 +53,19 @@
     <div class="hint" id="hint">A small journey, just for you</div>
     <audio id="audio" preload="none"></audio>
   </main>
-  <script>\n    document.querySelectorAll(".playlist-tab").forEach((tab) => {\n      tab.addEventListener("click", () => {\n        const player = document.getElementById("spotify-player");\n        player.src = "https://open.spotify.com/embed/playlist/" + tab.dataset.playlist + "?utm_source=generator&theme=0";\n        document.querySelectorAll(".playlist-tab").forEach((item) => {\n          const selected = item === tab;\n          item.classList.toggle("active", selected);\n          item.setAttribute("aria-pressed", String(selected));\n        });\n      });\n    });\n  </script>\n  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll(".playlist-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const player = document.getElementById("spotify-player");
+        player.src = "https://open.spotify.com/embed/playlist/" + tab.dataset.playlist + "?utm_source=generator&theme=0";
+        document.querySelectorAll(".playlist-tab").forEach((item) => {
+          const selected = item === tab;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+      });
+    });
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
