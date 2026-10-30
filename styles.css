@@ -1,127 +1,25 @@
-:root{color-scheme:dark;--cream:#f6e9d2;--muted:rgba(246,233,210,.68);--glass:rgba(22,25,40,.52);--line:rgba(255,245,225,.19)}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#171a2b;color:var(--cream)}
-body{font-family:"DM Mono",monospace}.experience{position:relative;width:100%;height:100%;min-height:520px;overflow:hidden;background:#202a3c}
-#world{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
-.grain{position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
-.topbar{position:absolute;top:0;left:0;right:0;padding:27px 4.2vw;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(16,20,34,.45),transparent)}
-.wordmark{font-family:"Playfair Display",serif;font-size:20px;letter-spacing:.01em;color:#fff2dc;text-decoration:none;text-shadow:0 2px 12px #1c1c2b}.mark{font-family:serif;color:#f5d49a;margin-right:7px}
-.top-note,.eyebrow,.track-label,.scene-caption,.hint{font-size:9px;letter-spacing:.19em}.top-note{color:rgba(255,245,225,.78);display:flex;align-items:center;gap:9px}.live-dot{width:6px;height:6px;border-radius:50%;background:#d9c79c;box-shadow:0 0 10px #e6d39f}
-.destination{position:absolute;left:9vw;top:25%;max-width:min(540px,75vw);text-shadow:0 3px 22px rgba(20,20,30,.38);animation:arrive .8s ease both}
-.eyebrow{color:#f2d8a9;margin:0 0 15px}.destination h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(40px,6.4vw,82px);line-height:1.04;letter-spacing:-.035em;margin:0;color:#fff0d8}.subtitle{font-family:"Playfair Display",serif;font-size:clamp(15px,1.7vw,20px);color:rgba(255,241,218,.85);margin-top:18px}
-.scene-caption{position:absolute;right:4.3vw;bottom:166px;color:rgba(255,244,225,.85);text-shadow:0 2px 8px #252536}.caption-divider{padding:0 9px;color:#f3d39b}
-.controls{position:absolute;left:4.2vw;right:4.2vw;bottom:32px;display:flex;justify-content:space-between;align-items:end;gap:20px}
-.music-panel{display:flex;align-items:center;gap:14px;padding:13px 16px;background:var(--glass);border:1px solid var(--line);border-radius:3px;backdrop-filter:blur(12px);min-width:min(560px,65vw);box-shadow:0 10px 35px rgba(0,0,0,.12)}
-.music-icon{width:35px;height:35px;display:grid;place-items:center;border:1px solid rgba(255,240,210,.3);border-radius:50%;font-size:19px;color:#f2d8a9}
-.track-copy{display:flex;flex-direction:column;gap:4px;min-width:130px;flex:1}.track-label{font-size:8px;color:#e8cfa4;letter-spacing:.16em}.track-copy strong{font-size:11px;font-weight:400;color:#fff1dc}.track-copy>span:last-child{font-size:9px;color:var(--muted)}
-.player-actions{display:flex;align-items:center;gap:8px}.icon-button,.play-button{border:0;color:#fff1dc;cursor:pointer}.icon-button{font-size:19px;background:transparent;padding:7px}.play-button{width:34px;height:34px;border-radius:50%;background:#f0d8ad;color:#2a2933;font-size:12px;padding-left:3px}
-.volume-control{display:flex;align-items:center;gap:8px;color:#f2d8a9;font-size:15px}.volume-control input{width:62px;accent-color:#e8cfa4}
-.add-music{font-size:10px;color:#f5dfbd;white-space:nowrap;cursor:pointer;border-left:1px solid var(--line);padding:8px 0 8px 13px}.add-music:hover,.icon-button:hover{color:#fff}
-.discover-button{border:1px solid rgba(255,245,225,.55);background:rgba(30,32,47,.23);color:#fff1dc;padding:16px 19px;font:10px "DM Mono",monospace;letter-spacing:.04em;white-space:nowrap;cursor:pointer;backdrop-filter:blur(8px);transition:background .25s,transform .25s}.discover-button:hover{background:rgba(30,32,47,.55);transform:translateY(-2px)}.discover-button>span:first-child{color:#f3d39b;margin-right:7px}.arrow{margin-left:16px;color:#f3d39b}
-.hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.13em;color:rgba(255,245,225,.55);white-space:nowrap}
-button:focus-visible,a:focus-visible,input:focus-visible,label:focus-within{outline:2px solid #f0d8ad;outline-offset:4px}
-@keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:760px){.topbar{padding:20px 6vw}.wordmark{font-size:18px}.top-note{font-size:8px}.destination{left:7vw;top:24%;max-width:85vw}.destination h1{font-size:clamp(42px,12vw,68px)}.scene-caption{bottom:205px;right:7vw;font-size:8px}.controls{left:5vw;right:5vw;bottom:35px;flex-direction:column;align-items:stretch;gap:10px}.music-panel{min-width:0;width:100%;padding:11px 10px;gap:9px}.track-copy{min-width:0}.track-copy strong{font-size:10px}.track-copy>span:last-child{font-size:8px}.music-icon{width:30px;height:30px;flex-shrink:0}.player-actions{gap:2px}.icon-button{padding:5px}.volume-control{display:none}.add-music{font-size:9px;padding-left:9px}.add-music span{display:none}.discover-button{width:100%;padding:14px}.hint{bottom:12px}}
-@media(max-height:650px) and (min-width:761px){.destination{top:20%}.controls{bottom:20px}.scene-caption{bottom:135px}}
-
-/* Spotify playlist player */
-.spotify-panel{display:block;width:352px;min-width:0;padding:0;border:0;background:transparent;box-shadow:0 12px 35px rgba(0,0,0,.22);backdrop-filter:none}
-.spotify-panel iframe{display:block;width:352px;max-width:100%;height:152px;border:0;border-radius:12px;overflow:hidden}
-@media(max-width:760px){.spotify-panel{width:100%}.spotify-panel iframe{width:100%;height:152px}}
-
-
-/* Switch between the two Spotify soundtracks */
-.spotify-panel{display:flex;flex-direction:column;gap:8px}
-.playlist-switch{display:flex;gap:6px}
-.playlist-tab{border:1px solid rgba(255,245,225,.4);background:rgba(22,25,40,.58);color:rgba(255,241,220,.8);padding:7px 12px;border-radius:20px;font:9px "DM Mono",monospace;letter-spacing:.06em;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
-.playlist-tab:hover,.playlist-tab.active{background:rgba(240,216,173,.95);border-color:#f0d8ad;color:#292936}
-.playlist-tab:focus-visible{outline:2px solid #fff1dc;outline-offset:3px}
-@media(max-width:760px){.spotify-panel{gap:7px}.playlist-tab{padding:7px 11px}}
-
-
-/* Immersive scene-first layout: let the landscape lead */
-.destination{
-  left:50%;
-  top:23%;
-  width:min(760px,86vw);
-  max-width:86vw;
-  transform:translateX(-50%);
-  text-align:center;
-  text-shadow:0 3px 28px rgba(12,18,29,.58);
-}
-.destination h1{
-  text-wrap:balance;
-  text-shadow:0 4px 30px rgba(12,18,29,.42);
-}
-.subtitle{margin-left:auto;margin-right:auto;max-width:540px}
-.scene-caption{bottom:132px}
-.controls{
-  left:3.2vw;
-  right:3.2vw;
-  bottom:22px;
-  align-items:flex-end;
-}
-.spotify-panel{
-  width:292px;
-  gap:5px;
-  padding:0;
-  opacity:.88;
-  filter:saturate(.72);
-  transition:opacity .25s ease,filter .25s ease;
-}
-.spotify-panel:hover,.spotify-panel:focus-within{opacity:1;filter:saturate(1)}
-.spotify-panel iframe{
-  width:292px;
-  height:152px;
-  border-radius:10px;
-  box-shadow:0 8px 28px rgba(8,12,22,.18);
-}
-.playlist-switch{gap:5px;padding-left:2px}
-.playlist-tab{
-  border-color:rgba(255,245,225,.18);
-  background:rgba(17,22,34,.32);
-  color:rgba(255,241,220,.72);
-  padding:5px 10px;
-  font-size:8px;
-  backdrop-filter:blur(8px);
-}
-.playlist-tab:hover,.playlist-tab.active{
-  background:rgba(239,222,194,.82);
-  border-color:rgba(239,222,194,.55);
-  color:#292936;
-}
-.discover-button{
-  background:rgba(18,24,36,.18);
-  border-color:rgba(255,245,225,.32);
-  padding:13px 16px;
-  font-size:9px;
-  backdrop-filter:blur(10px);
-}
-.discover-button:hover{background:rgba(18,24,36,.42)}
-.hint{opacity:.7}
-@media(max-width:760px){
-  .destination{
-    top:22%;
-    left:50%;
-    width:88vw;
-    max-width:88vw;
-    text-align:center;
-  }
-  .destination h1{font-size:clamp(38px,10vw,62px)}
-  .subtitle{font-size:16px;margin-top:13px}
-  .scene-caption{bottom:202px;right:6vw}
-  .controls{
-    left:5vw;right:5vw;bottom:28px;
-    flex-direction:column;align-items:center;gap:8px;
-  }
-  .spotify-panel{width:min(292px,100%);align-self:flex-start}
-  .spotify-panel iframe{width:100%;height:152px}
-  .playlist-switch{gap:5px}
-  .playlist-tab{padding:5px 9px}
-  .discover-button{width:100%;padding:12px}
-  .hint{display:none}
-}
-@media(max-height:650px) and (min-width:761px){
-  .destination{top:17%}
-  .scene-caption{bottom:126px}
-  .controls{bottom:14px}
-}
+:root{color-scheme:dark;--cream:#f6ecd9;--gold:#e9c99a}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#182333;color:var(--cream)}body{font-family:"DM Mono",monospace}button,a{-webkit-tap-highlight-color:transparent}
+.experience{position:relative;width:100%;height:100%;min-height:500px;overflow:hidden;background:#182333;isolation:isolate}
+#world{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges;cursor:crosshair;transition:opacity .65s ease}
+.scene-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(13,20,32,.22),transparent 26%,transparent 62%,rgba(11,18,29,.32));z-index:1}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.09;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+.topbar{position:absolute;z-index:4;top:0;left:0;right:0;padding:27px 4.2vw;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(12,19,31,.36),transparent)}
+.wordmark{font:20px "Playfair Display",serif;color:#fff2dc;text-decoration:none}.mark{color:var(--gold);margin-right:7px}.top-note,.eyebrow,.scene-caption,.micro-hint,.welcome-kicker,.welcome-foot{font-size:9px;letter-spacing:.19em}.top-note{color:rgba(255,245,225,.76);display:flex;align-items:center;gap:9px}.live-dot{width:6px;height:6px;border-radius:50%;background:#d9c79c;box-shadow:0 0 10px #e6d39f}
+.destination{position:absolute;z-index:3;left:50%;top:22%;width:min(780px,88vw);transform:translateX(-50%);text-align:center;text-shadow:0 3px 28px rgba(12,18,29,.58);animation:arrive 1.1s ease both;pointer-events:none}.eyebrow{color:#f2d8a9;margin:0 0 15px}.destination h1{font:400 clamp(42px,6.4vw,82px)/1.04 "Playfair Display",serif;letter-spacing:-.035em;margin:0;color:#fff0d8;text-wrap:balance;text-shadow:0 4px 30px rgba(12,18,29,.42)}.subtitle{font:italic clamp(15px,1.7vw,20px) "Playfair Display",serif;color:rgba(255,241,218,.88);margin:18px auto 0;max-width:540px}
+.scene-caption{position:absolute;z-index:3;right:4.3vw;bottom:112px;color:rgba(255,244,225,.82);text-shadow:0 2px 8px #252536;font-size:8px}.caption-divider{padding:0 9px;color:var(--gold)}
+.bottom-dock{position:absolute;z-index:5;left:3.2vw;right:3.2vw;bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px}.sound-wrap{position:relative}
+.music-toggle{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid rgba(255,245,225,.22);border-radius:30px;background:rgba(15,23,36,.25);backdrop-filter:blur(12px);color:rgba(255,242,222,.9);font:9px "DM Mono",monospace;letter-spacing:.08em;cursor:pointer;transition:.25s}.music-toggle:hover,.music-toggle[aria-expanded=true]{background:rgba(15,23,36,.52);border-color:rgba(255,245,225,.4)}.music-glyph{font-size:15px;color:var(--gold)}
+.sound-bars{height:12px;display:flex;align-items:center;gap:2px}.sound-bars i{display:block;width:2px;height:4px;background:#d9c39f;border-radius:2px}.sound-bars i:nth-child(2){height:9px}.sound-bars i:nth-child(3){height:6px}.music-toggle[aria-expanded=true] .sound-bars i{animation:equalize .8s ease-in-out infinite alternate}
+.sound-panel{position:absolute;left:0;bottom:calc(100% + 12px);width:320px;padding:12px;border:1px solid rgba(255,245,225,.17);border-radius:13px;background:rgba(15,22,34,.68);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.2);animation:panel-in .25s ease both}.sound-panel[hidden]{display:none}
+.sound-heading{display:flex;justify-content:space-between;align-items:center;color:rgba(255,241,220,.64);font-size:8px;letter-spacing:.16em;margin:0 2px 9px}.close-music{border:0;background:transparent;color:rgba(255,241,220,.7);font-size:19px;cursor:pointer;line-height:1}
+.playlist-switch{display:flex;gap:4px;margin-bottom:9px}.playlist-tab{flex:1;border:1px solid rgba(255,245,225,.15);background:rgba(255,255,255,.035);color:rgba(255,241,220,.72);padding:7px 5px;border-radius:7px;font:8px "DM Mono",monospace;cursor:pointer;transition:all .2s}.playlist-tab:hover,.playlist-tab.active{background:rgba(239,222,194,.88);border-color:rgba(239,222,194,.65);color:#292936}.sound-panel iframe{display:block;width:100%;height:152px;border:0;border-radius:9px;overflow:hidden}
+.dock-right{display:flex;align-items:center;gap:15px}.place-count{font-size:8px;letter-spacing:.15em;color:rgba(255,244,225,.62);font-variant-numeric:tabular-nums}.discover-button{border:1px solid rgba(255,245,225,.34);background:rgba(18,24,36,.2);color:#fff1dc;padding:13px 16px;font:9px "DM Mono",monospace;letter-spacing:.04em;white-space:nowrap;cursor:pointer;backdrop-filter:blur(10px);transition:.25s}.discover-button:hover{background:rgba(18,24,36,.48);border-color:rgba(255,245,225,.58);transform:translateY(-2px)}.discover-button>span:first-child,.arrow{color:var(--gold)}.discover-button>span:first-child{margin-right:7px}.arrow{margin-left:13px}
+.micro-hint{position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.13em;color:rgba(255,245,225,.5);white-space:nowrap;pointer-events:none}
+.welcome{position:absolute;z-index:10;inset:0;display:grid;place-items:center;text-align:center;background:linear-gradient(180deg,rgba(12,19,31,.38),rgba(12,19,31,.58));backdrop-filter:blur(1px);transition:opacity 1s ease,visibility 1s ease}.welcome.leaving{opacity:0;visibility:hidden;pointer-events:none}.welcome-copy{transform:translateY(-2vh);padding:24px}.welcome-star{font-size:24px;color:var(--gold)}.welcome-kicker{color:rgba(255,235,205,.7);margin:20px 0 17px;font-size:8px}.welcome h2{font:400 clamp(43px,7vw,78px)/1.02 "Playfair Display",serif;letter-spacing:-.035em;margin:0;color:#fff0d8;text-shadow:0 4px 30px rgba(0,0,0,.3)}.welcome-sub{font:italic 17px/1.55 "Playfair Display",serif;color:rgba(255,239,216,.82);margin:20px 0 26px}.enter-button{border:1px solid rgba(255,241,220,.56);background:rgba(255,244,225,.08);color:#fff1dc;padding:13px 20px;font:9px "DM Mono",monospace;letter-spacing:.08em;cursor:pointer;backdrop-filter:blur(8px);transition:.2s}.enter-button:hover{background:rgba(255,244,225,.18);transform:translateY(-2px)}.enter-button span{color:var(--gold);margin-left:12px}.welcome-foot{position:absolute;bottom:28px;color:rgba(255,241,220,.48);font-size:8px}
+button:focus-visible,a:focus-visible{outline:2px solid #f0d8ad;outline-offset:4px}
+@keyframes arrive{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}@keyframes panel-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@keyframes equalize{to{height:2px}}
+@media(max-width:760px){.topbar{padding:19px 6vw}.wordmark{font-size:18px}.top-note{font-size:7px}.destination{top:21%;width:90vw}.destination h1{font-size:clamp(39px,10.5vw,62px)}.subtitle{font-size:16px;margin-top:13px}.scene-caption{bottom:196px;right:6vw;font-size:7px}.bottom-dock{left:5vw;right:5vw;bottom:28px;align-items:flex-end;gap:10px}.sound-panel{width:min(320px,90vw);bottom:calc(100% + 10px)}.playlist-tab{font-size:7px;padding:7px 3px}.dock-right{gap:8px;flex-direction:column;align-items:flex-end}.place-count{font-size:7px}.discover-button{padding:12px 10px;font-size:8px}.micro-hint{display:none}.welcome-kicker{font-size:7px}.welcome-sub{font-size:15px}}
+@media(max-width:390px){.discover-button{max-width:178px;white-space:normal;line-height:1.4}.destination{top:19%}.scene-caption{bottom:190px}}
+@media(max-height:650px) and (min-width:761px){.destination{top:16%}.scene-caption{bottom:100px}.bottom-dock{bottom:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
