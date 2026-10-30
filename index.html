@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171a2b">
+  <meta name="description" content="A Little World — a quiet, pixel-art journey through beautiful places, accompanied by classical and flute music.">
+  <title>A Little World — a pixel-art journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="experience">
+    <canvas id="world" aria-label="Animated pixel-art landscape"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="A Little World home"><span class="mark">✳</span> a little world</a>
+      <div class="top-note"><span class="live-dot"></span><span id="chapter">A QUIET JOURNEY</span></div>
+    </header>
+
+    <section class="destination" aria-live="polite">
+      <p class="eyebrow" id="region">THE WORLD, IN PIXELS</p>
+      <h1 id="place">Somewhere beautiful</h1>
+      <p class="subtitle" id="description">Take a breath. The world is waiting.</p>
+    </section>
+
+    <div class="scene-caption"><span id="scene-time">GOLDEN HOUR</span><span class="caption-divider">·</span><span id="scene-weather">A GENTLE BREEZE</span></div>
+
+    <footer class="controls">
+      <div class="music-panel">
+        <div class="music-icon" aria-hidden="true">♫</div>
+        <div class="track-copy">
+          <span class="track-label">THE SOUNDTRACK</span>
+          <strong id="track-name">Your music, your moment</strong>
+          <span id="track-hint">Add your classical or flute playlist</span>
+        </div>
+        <div class="player-actions">
+          <button id="previous" class="icon-button" aria-label="Previous track" title="Previous">↶</button>
+          <button id="play" class="play-button" aria-label="Play music" title="Play">▶</button>
+          <button id="next" class="icon-button" aria-label="Next track" title="Next">↷</button>
+        </div>
+        <label class="volume-control" title="Volume">
+          <span aria-hidden="true">♪</span>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Music volume">
+        </label>
+        <label class="add-music" for="music-files">＋ <span>Add music</span></label>
+        <input id="music-files" type="file" accept="audio/*" multiple hidden>
+      </div>
+      <button id="discover" class="discover-button"><span>✧</span> Discover another world <span class="arrow">↗</span></button>
+    </footer>
+    <div class="hint" id="hint">A small journey, just for you</div>
+    <audio id="audio" preload="none"></audio>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
