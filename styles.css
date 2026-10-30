@@ -36,3 +36,92 @@ button:focus-visible,a:focus-visible,input:focus-visible,label:focus-within{outl
 .playlist-tab:hover,.playlist-tab.active{background:rgba(240,216,173,.95);border-color:#f0d8ad;color:#292936}
 .playlist-tab:focus-visible{outline:2px solid #fff1dc;outline-offset:3px}
 @media(max-width:760px){.spotify-panel{gap:7px}.playlist-tab{padding:7px 11px}}
+
+
+/* Immersive scene-first layout: let the landscape lead */
+.destination{
+  left:50%;
+  top:23%;
+  width:min(760px,86vw);
+  max-width:86vw;
+  transform:translateX(-50%);
+  text-align:center;
+  text-shadow:0 3px 28px rgba(12,18,29,.58);
+}
+.destination h1{
+  text-wrap:balance;
+  text-shadow:0 4px 30px rgba(12,18,29,.42);
+}
+.subtitle{margin-left:auto;margin-right:auto;max-width:540px}
+.scene-caption{bottom:132px}
+.controls{
+  left:3.2vw;
+  right:3.2vw;
+  bottom:22px;
+  align-items:flex-end;
+}
+.spotify-panel{
+  width:292px;
+  gap:5px;
+  padding:0;
+  opacity:.88;
+  filter:saturate(.72);
+  transition:opacity .25s ease,filter .25s ease;
+}
+.spotify-panel:hover,.spotify-panel:focus-within{opacity:1;filter:saturate(1)}
+.spotify-panel iframe{
+  width:292px;
+  height:152px;
+  border-radius:10px;
+  box-shadow:0 8px 28px rgba(8,12,22,.18);
+}
+.playlist-switch{gap:5px;padding-left:2px}
+.playlist-tab{
+  border-color:rgba(255,245,225,.18);
+  background:rgba(17,22,34,.32);
+  color:rgba(255,241,220,.72);
+  padding:5px 10px;
+  font-size:8px;
+  backdrop-filter:blur(8px);
+}
+.playlist-tab:hover,.playlist-tab.active{
+  background:rgba(239,222,194,.82);
+  border-color:rgba(239,222,194,.55);
+  color:#292936;
+}
+.discover-button{
+  background:rgba(18,24,36,.18);
+  border-color:rgba(255,245,225,.32);
+  padding:13px 16px;
+  font-size:9px;
+  backdrop-filter:blur(10px);
+}
+.discover-button:hover{background:rgba(18,24,36,.42)}
+.hint{opacity:.7}
+@media(max-width:760px){
+  .destination{
+    top:22%;
+    left:50%;
+    width:88vw;
+    max-width:88vw;
+    text-align:center;
+  }
+  .destination h1{font-size:clamp(38px,10vw,62px)}
+  .subtitle{font-size:16px;margin-top:13px}
+  .scene-caption{bottom:202px;right:6vw}
+  .controls{
+    left:5vw;right:5vw;bottom:28px;
+    flex-direction:column;align-items:center;gap:8px;
+  }
+  .spotify-panel{width:min(292px,100%);align-self:flex-start}
+  .spotify-panel iframe{width:100%;height:152px}
+  .playlist-switch{gap:5px}
+  .playlist-tab{padding:5px 9px}
+  .discover-button{width:100%;padding:12px}
+  .hint{display:none}
+}
+@media(max-height:650px) and (min-width:761px){
+  .destination{top:17%}
+  .scene-caption{bottom:126px}
+  .controls{bottom:14px}
+}
