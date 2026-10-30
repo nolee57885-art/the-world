@@ -1,71 +1,16 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#171a2b">
-  <meta name="description" content="A Little World — a quiet, pixel-art journey through beautiful places, accompanied by classical and flute music.">
-  <title>A Little World — a pixel-art journey</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="experience">
-    <canvas id="world" aria-label="Animated pixel-art landscape"></canvas>
-    <div class="grain" aria-hidden="true"></div>
-    <header class="topbar">
-      <a class="wordmark" href="#" aria-label="A Little World home"><span class="mark">✳</span> a little world</a>
-      <div class="top-note"><span class="live-dot"></span><span id="chapter">A QUIET JOURNEY</span></div>
-    </header>
-
-    <section class="destination" aria-live="polite">
-      <p class="eyebrow" id="region">THE WORLD, IN PIXELS</p>
-      <h1 id="place">Somewhere beautiful</h1>
-      <p class="subtitle" id="description">Take a breath. The world is waiting.</p>
-    </section>
-
-    <div class="scene-caption"><span id="scene-time">GOLDEN HOUR</span><span class="caption-divider">·</span><span id="scene-weather">A GENTLE BREEZE</span></div>
-
-    <footer class="controls">
-      <div class="music-panel spotify-panel">
-        <div class="playlist-switch" role="group" aria-label="Choose a soundtrack playlist">
-          <button class="playlist-tab active" type="button" data-playlist="1ym4rFe5GaUgSH6CpKr70N" aria-pressed="true">Playlist 1</button>
-          <button class="playlist-tab" type="button" data-playlist="2K8LvkhIVDlsiUzaaKqgRf" aria-pressed="false">Playlist 2</button>
-          <button class="playlist-tab" type="button" data-playlist="2JavdfuwRpOTPjP8T6N8TI" aria-pressed="false">Playlist 3</button>
-        </div>
-        <iframe id="spotify-player"
-          title="Classical and flute playlist on Spotify"
-          src="https://open.spotify.com/embed/playlist/1ym4rFe5GaUgSH6CpKr70N?utm_source=generator&theme=0"
-          width="352" height="152" frameborder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"></iframe>
-        <div hidden>
-          <div id="track-name"></div><div id="track-hint"></div>
-          <button id="previous"></button><button id="play"></button><button id="next"></button>
-          <input id="volume" type="range" value="0.65">
-          <input id="music-files" type="file" multiple>
-        </div>
-      </div>
-      <button id="discover" class="discover-button"><span>✧</span> Discover another world <span class="arrow">↗</span></button>
-    </footer>
-    <div class="hint" id="hint">A small journey, just for you</div>
-    <audio id="audio" preload="none"></audio>
-  </main>
-  <script>
-    document.querySelectorAll(".playlist-tab").forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const player = document.getElementById("spotify-player");
-        player.src = "https://open.spotify.com/embed/playlist/" + tab.dataset.playlist + "?utm_source=generator&theme=0";
-        document.querySelectorAll(".playlist-tab").forEach((item) => {
-          const selected = item === tab;
-          item.classList.toggle("active", selected);
-          item.setAttribute("aria-pressed", String(selected));
-        });
-      });
-    });
-  </script>
-  <script src="script.js"></script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#182333"><meta name="description" content="A Little World — a quiet, animated pixel-art journey through beautiful places, with classical music."><title>A Little World — a quiet journey</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
+<body><main class="experience">
+<canvas id="world" aria-label="Animated pixel-art landscape. Click the scenery to discover small details."></canvas><div class="scene-shade"></div><div class="grain"></div>
+<header class="topbar"><a class="wordmark" href="#" aria-label="A Little World home"><span class="mark">✳</span> a little world</a><div class="top-note"><span class="live-dot"></span><span id="chapter">A QUIET JOURNEY</span></div></header>
+<section class="destination" aria-live="polite"><p class="eyebrow" id="region">A PLACE TO PAUSE</p><h1 id="place">Somewhere beautiful</h1><p class="subtitle" id="description">Take a breath. The world is waiting.</p></section>
+<div class="scene-caption"><span id="scene-time">GOLDEN HOUR</span><span class="caption-divider">·</span><span id="scene-weather">A GENTLE BREEZE</span></div>
+<div class="bottom-dock"><div class="sound-wrap">
+<button id="music-toggle" class="music-toggle" type="button" aria-expanded="false" aria-controls="sound-panel"><span class="music-glyph">♫</span><span>Soundtrack</span><span class="sound-bars"><i></i><i></i><i></i></span></button>
+<section id="sound-panel" class="sound-panel" aria-label="Choose a soundtrack" hidden><div class="sound-heading"><span>THE SOUND OF THIS PLACE</span><button id="close-music" class="close-music" type="button" aria-label="Close music panel">×</button></div>
+<div class="playlist-switch" role="group" aria-label="Choose a soundtrack playlist"><button class="playlist-tab active" type="button" data-playlist="1ym4rFe5GaUgSH6CpKr70N" aria-pressed="true">I · Stillness</button><button class="playlist-tab" type="button" data-playlist="2K8LvkhIVDlsiUzaaKqgRf" aria-pressed="false">II · Reverie</button><button class="playlist-tab" type="button" data-playlist="2JavdfuwRpOTPjP8T6N8TI" aria-pressed="false">III · Elsewhere</button></div>
+<iframe id="spotify-player" title="A Little World soundtrack on Spotify" src="https://open.spotify.com/embed/playlist/1ym4rFe5GaUgSH6CpKr70N?utm_source=generator&theme=0" width="320" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></section></div>
+<div class="dock-right"><span class="place-count" id="place-count">01 / 12</span><button id="discover" class="discover-button" type="button"><span>✧</span> Find me somewhere new <span class="arrow">↗</span></button></div></div>
+<p class="micro-hint">Stay a little. Notice a little.</p>
+<section class="welcome" id="welcome" aria-label="Welcome to A Little World"><div class="welcome-copy"><span class="welcome-star">✳</span><p class="welcome-kicker">A QUIET PLACE ON THE INTERNET</p><h2>Somewhere,<br> beyond the noise.</h2><p class="welcome-sub">A little world to wander through.<br>Stay as long as you like.</p><button id="enter-world" class="enter-button" type="button">Enter the world <span>↗</span></button></div><span class="welcome-foot">A LITTLE JOURNEY · NO RUSH</span></section>
+</main><script src="script.js"></script></body></html>
