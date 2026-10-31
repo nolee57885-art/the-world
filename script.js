@@ -57,10 +57,25 @@ const v=ctx.createRadialGradient(240,130,85,240,130,300);v.addColorStop(0,"rgba(
 }
 function setScene(i){idx=i;let s=scenes[idx];$("place").textContent=s.name;$("region").textContent=s.region;$("description").textContent=s.desc;$("scene-time").textContent=s.time;$("scene-weather").textContent=s.weather;$("place-count").textContent=String(idx+1).padStart(2,"0")+" / "+String(scenes.length).padStart(2,"0");$("place").style.animation="none";void $("place").offsetWidth;$("place").style.animation="arrive 1.1s ease both"}
 function discover(){if(changing)return;changing=true;canvas.style.opacity="0";setTimeout(()=>{let n=idx;while(n===idx)n=Math.floor(Math.random()*scenes.length);setScene(n);petals=[];sparkles=[];canvas.style.opacity="1";setTimeout(()=>changing=false,700)},520)}
-$("discover").addEventListener("click",discover);$("enter-world").addEventListener("click",()=>$("welcome").classList.add("leaving"));
-$("music-toggle").addEventListener("click",()=>{let p=$("sound-panel"),open=p.hidden;p.hidden=!open;$("music-toggle").setAttribute("aria-expanded",String(open))});
-$("close-music").addEventListener("click",()=>{$("sound-panel").hidden=true;$("music-toggle").setAttribute("aria-expanded","false")});
-document.querySelectorAll(".playlist-tab").forEach(tab=>tab.addEventListener("click",()=>{$("spotify-player").src="https://open.spotify.com/embed/playlist/"+tab.dataset.playlist+"?utm_source=generator&theme=0";document.querySelectorAll(".playlist-tab").forEach(b=>{let on=b===tab;b.classList.toggle("active",on);b.setAttribute("aria-pressed",String(on))})}));
+const audio=$("ambient-audio"),musicButton=$("music-play"),musicPlayer=document.querySelector(".music-player");
+const tracks=[
+{title:"Badinerie",artist:"J.S. Bach · European Archive",url:"https://www.orangefreesounds.com/wp-content/uploads/2017/09/Bach-badinerie.mp3"},
+{title:"Träumerei",artist:"Robert Schumann · Donald Betts",url:"https://www.orangefreesounds.com/wp-content/uploads/2016/01/Traumerei-piano-music.mp3"},
+{title:"Nocturne, Op. 9 No. 1",artist:"Frédéric Chopin · Olga Gurevich",url:"https://www.orangefreesounds.com/wp-content/uploads/2018/01/Chopin-nocturne-op-9-no-1-1.mp3"},
+{title:"Waltz in A Minor",artist:"Frédéric Chopin · Aya Higuchi",url:"https://www.orangefreesounds.com/wp-content/uploads/2017/03/Chopin-waltz-in-a-minor.mp3"},
+{title:"Morning Mood",artist:"Edvard Grieg · Musopen Symphony",url:"https://www.orangefreesounds.com/wp-content/uploads/2018/05/Edvard-grieg-morning-mood.mp3"}
+];
+let trackIndex=0,hasStarted=false,skipGuard=false;
+function showTrack(){const track=tracks[trackIndex];$("track-title").textContent=track.title;$("track-artist").textContent=track.artist}
+function setPlaying(playing){musicPlayer.classList.toggle("is-playing",playing);musicButton.innerHTML=playing?"Ⅱ":"▶";musicButton.setAttribute("aria-label",playing?"Pause music":"Play music");$("track-state").textContent=playing?"NOW PLAYING":"A LITTLE MUSIC"}
+function loadTrack(index,autoplay){trackIndex=(index+tracks.length)%tracks.length;showTrack();audio.src=tracks[trackIndex].url;audio.load();if(autoplay){audio.play().then(()=>{hasStarted=true;setPlaying(true)}).catch(()=>{setPlaying(false);$("track-state").textContent="TAP PLAY TO LISTEN"})}}
+async function startMusic(){if(!audio.src)loadTrack(trackIndex,false);try{await audio.play();hasStarted=true;setPlaying(true)}catch(error){setPlaying(false);$("track-state").textContent="TAP PLAY TO LISTEN"}}
+musicButton.addEventListener("click",()=>{if(audio.paused)startMusic();else{audio.pause();setPlaying(false)}});
+audio.addEventListener("ended",()=>loadTrack(trackIndex+1,true));
+audio.addEventListener("error",()=>{if(skipGuard)return;skipGuard=true;setTimeout(()=>{skipGuard=false;if(hasStarted)loadTrack(trackIndex+1,true)},350)});
+$("discover").addEventListener("click",discover);
+$("enter-world").addEventListener("click",()=>{$("welcome").classList.add("leaving");startMusic()});
+
 canvas.addEventListener("click",e=>{let b=canvas.getBoundingClientRect(),x=(e.clientX-b.left)/b.width*W,y=(e.clientY-b.top)/b.height*H,s=scenes[idx];if(y>190&&["egypt","india","japan","kashmir","kerala","istanbul"].includes(s.kind)){ripples.push({x,y,r:3,life:1});for(let i=0;i<6;i++)sparkles.push({x,y,vx:(Math.random()-.5)*1.2,vy:-Math.random()*.7,life:1})}else for(let i=0;i<10;i++)petals.push({x:x+(Math.random()-.5)*18,y:y+(Math.random()-.5)*14,vx:(Math.random()-.5)*.65,vy:.25+Math.random()*.55,rot:Math.random()*3,c:["#f2c9c4","#f0d7ad","#e8e5cf"][i%3]})});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("sound-panel").hidden){$("sound-panel").hidden=true;$("music-toggle").setAttribute("aria-expanded","false")}if(e.key==="ArrowRight"&&$("welcome").classList.contains("leaving"))discover()});
 function frame(now){let dt=Math.min((now-last)/1000||0,.05);last=now;t+=dt;draw();requestAnimationFrame(frame)}
