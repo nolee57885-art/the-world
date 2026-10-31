@@ -77,7 +77,7 @@ $("discover").addEventListener("click",discover);
 $("enter-world").addEventListener("click",()=>{$("welcome").classList.add("leaving");startMusic()});
 
 canvas.addEventListener("click",e=>{let b=canvas.getBoundingClientRect(),x=(e.clientX-b.left)/b.width*W,y=(e.clientY-b.top)/b.height*H,s=scenes[idx];if(y>190&&["egypt","india","japan","kashmir","kerala","istanbul"].includes(s.kind)){ripples.push({x,y,r:3,life:1});for(let i=0;i<6;i++)sparkles.push({x,y,vx:(Math.random()-.5)*1.2,vy:-Math.random()*.7,life:1})}else for(let i=0;i<10;i++)petals.push({x:x+(Math.random()-.5)*18,y:y+(Math.random()-.5)*14,vx:(Math.random()-.5)*.65,vy:.25+Math.random()*.55,rot:Math.random()*3,c:["#f2c9c4","#f0d7ad","#e8e5cf"][i%3]})});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("sound-panel").hidden){$("sound-panel").hidden=true;$("music-toggle").setAttribute("aria-expanded","false")}if(e.key==="ArrowRight"&&$("welcome").classList.contains("leaving"))discover()});
+document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"&&$("welcome").classList.contains("leaving"))discover()});
 function frame(now){let dt=Math.min((now-last)/1000||0,.05);last=now;t+=dt;draw();requestAnimationFrame(frame)}
 window.addEventListener("resize",resize);resize();setScene(0);requestAnimationFrame(frame);
 })();
